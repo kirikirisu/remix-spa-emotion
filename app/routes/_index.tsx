@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { css } from "@emotion/react";
 
 export const meta: MetaFunction = () => {
   return [
@@ -7,10 +8,14 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+const flag = false;
+
 export default function Index() {
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Welcome to Remix (SPA Mode)</h1>
+      <h1 css={[styles.h1, flag && styles.space]}>
+        Welcome to Remix (SPA Mode)
+      </h1>
       <ul>
         <li>
           <a
@@ -30,3 +35,12 @@ export default function Index() {
     </div>
   );
 }
+
+const styles = {
+  h1: css`
+    color: red;
+  `,
+  space: css`
+    padding: 40px;
+  `,
+};
